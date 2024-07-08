@@ -16,3 +16,18 @@ kubectl create deployment <deployment name> --image=<docker image name>
 kubectl explain <what to explain> deployment, pods etc
 
 
+### Upscale deployment
+
+kubectl scale deployment/<deployment name> --replicas=<number>
+kubectl set image deployment/<deployment name> <image name>=<full docker path to image>
+
+### Debugging commands
+
+kubectl describe, kubectl logs, kubectl delete
+
+Use Lens for GUI presentation
+
+### Port forwarding commands
+
+kubectl port-forward <pod name> <localhost port>:<inner container pods>
+
