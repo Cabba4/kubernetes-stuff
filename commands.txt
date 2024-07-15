@@ -1,7 +1,7 @@
 ## k3 create cluster with 2 nodes
 
 k3d cluster create -a 2 
-k3d cluster create -a 2 --no-lb for no load balancer 
+k3d cluster create -a 2 --no-lb for no load balancer // k3d cluster create --port 8082:30080@agent:0 -p 8081:80@loadbalancer --agents 2
 
 ## kubectl see config data
 
@@ -31,3 +31,21 @@ Use Lens for GUI presentation
 
 kubectl port-forward <pod name> <localhost port>:<inner container pods>
 
+### Ingress logic
+
+Define what port u want in kube container to use in deployment.yaml
+This becomes your targetPort in service.yaml
+Use port in service.yaml to tell which port u actually want to use for the service(?)
+In ingress re route the port to http ie port 80 and that gets routed out to localhost on 8081 if u created cluster that way.
+
+### Kubernetes storage
+
+Static Method
+Persistet volumes - independent from pods, made by admin.
+Persistent volume claims - Are reuests for the storage ?
+
+Dynamic Method
+Storage classes - Templates for storage, when request is made then template gets used to create storage solution
+
+
+We use NFS storage and Longhorn

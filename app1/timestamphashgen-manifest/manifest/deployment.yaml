@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: timestamphash-dep
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: timestamphash
+  template:
+    metadata:
+      labels:
+        app: timestamphash
+    spec:
+      volumes:
+      - name: shared-time
+        emptyDir: {}
+      containers:
+      - name: timestamp
+        image: anmoltuni/timestamp:v1.10
+        volumeMounts:
+        - name: shared-time
+          mountPath: /usr/src/app/shared/
+      - name: hashgen
+        image: anmoltuni/hashgen:v1.10
+        volumeMounts:
+        - name: shared-time
+          mountPath: /usr/src/app/shared/

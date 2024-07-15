@@ -19,3 +19,5 @@ spec:
           env:
           - name: PORT
             value: "9999"
+          ports:
+          - containerPort: 9999

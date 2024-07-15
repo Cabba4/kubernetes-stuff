@@ -1,0 +1,15 @@
+{
+  "name": "pong",
+  "version": "1.0.0",
+  "description": "",
+  "main": "pong.js",
+  "scripts": {
+    "start": "node pong.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}

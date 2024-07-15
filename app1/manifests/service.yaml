@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: randomstringgen-svc
+spec:
+  type: ClusterIP
+  selector:
+    app: randomstringgen
+  ports:
+  - port: 6666
+    protocol: TCP
+    targetPort: 8888

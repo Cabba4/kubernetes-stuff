@@ -14,4 +14,8 @@ spec:
     spec:
       containers:
         - name: randomstringgen
-          image: anmoltuni/kubernetes:app1
+          image: anmoltuni/kubernetes:v1.07
+          imagePullPolicy: Always
+          env:
+          - name: PORT
+            value: "8888"

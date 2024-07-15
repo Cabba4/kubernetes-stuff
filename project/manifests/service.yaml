@@ -3,12 +3,10 @@ kind: Service
 metadata:
   name: crudapp-svc
 spec:
-  type: NodePort
-  selector:  
+  type: ClusterIP
+  selector:
     app: crudapp
   ports:
-  - name: http
-    port: 8082    # PORT which u will enter in localhost:<port> request
-    nodePort: 30080 
+  - port: 3333    # PORT which u will enter in localhost:<port> request
     targetPort: 9999  # PORT which runs the service inside the cluster/container
     protocol: TCP
