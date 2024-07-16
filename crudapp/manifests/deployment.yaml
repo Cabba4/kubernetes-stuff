@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: crudapp-dep
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: crudapp
+  template:
+    metadata:
+      labels:
+        app: crudapp
+    spec:
+      containers:
+        - name: crudapp
+          image: anmoltuni/crudapp:v1.04
+          imagePullPolicy: Always
+          env:
+          - name: PORT
+            value: "9999"
+          ports:
+          - containerPort: 9999
