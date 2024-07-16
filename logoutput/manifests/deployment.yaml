@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: randomstringgen-dep
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: randomstringgen
+  template:
+    metadata:
+      labels:
+        app: randomstringgen
+    spec:
+      containers:
+        - name: randomstringgen
+          image: anmoltuni/exercise1.01
+          imagePullPolicy: Always
+          env:
+          - name: PORT
+            value: "8888"
