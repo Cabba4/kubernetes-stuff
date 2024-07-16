@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: randomstringgen
-          image: anmoltuni/exercise1.01
+          image: anmoltuni/logoutput:v1.07
           imagePullPolicy: Always
           env:
           - name: PORT

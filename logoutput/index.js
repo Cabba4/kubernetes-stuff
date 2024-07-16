@@ -1,5 +1,11 @@
 // Log Output application
 
+const express = require('express');
+const app = express();
+const port = process.env.PORT || 3000;
+
+let random
+
 function createRandomString() {
   let randomString = '';
   const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -12,23 +18,23 @@ function createRandomString() {
   return randomString;
 }
 
-const getRandom = () => {
-  const random = createRandomString()
+function getRandom() {
+  random = createRandomString()
 
-  console.log(new Date().toISOString() + "::" + random);
+  random = new Date().toISOString() + "::" + random
+  console.log(random);
 
   setTimeout(getRandom, 5000)
+
+  return random;
 }
 
-function greetings() {
-  const introText = `
-  Exercise 1.01: Getting started
-
-  Output should be <TimeStamp>::<RandomString>
-  `
-
-  console.log(introText)
-}
-
-greetings()
 getRandom()
+
+app.get('/current', (req, res) => {
+  res.send(`TimeStamp: ${random}`);
+});
+
+app.listen(port, () => {
+  console.log(`RandomString is generated at http://localhost:${port}`);
+});
