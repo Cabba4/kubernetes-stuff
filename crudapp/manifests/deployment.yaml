@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: crudapp
-          image: anmoltuni/crudapp:v1.04
+          image: anmoltuni/crudapp:v1.05
           imagePullPolicy: Always
           env:
           - name: PORT

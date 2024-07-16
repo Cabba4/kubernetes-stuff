@@ -5,7 +5,14 @@ import signal
 import sys
 import threading
 
-handler_object = http.server.SimpleHTTPRequestHandler 
+class HttpRequestHandler(http.server.SimpleHTTPRequestHandler):
+    def do_GET(self):
+        if self.path == "/":
+            self.path = "index.html"
+        return http.server.SimpleHTTPRequestHandler.do_GET(self)
+
+
+handler_object = HttpRequestHandler
 
 def signal_handler(sig, frame):
     print('Shutting down server...')

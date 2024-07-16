@@ -4,6 +4,6 @@ WORKDIR /workdir
 
 ENV PORT=9999
 
-COPY server.py ./
+COPY server.py index.html ./
 
 CMD ["python", "server.py"]
