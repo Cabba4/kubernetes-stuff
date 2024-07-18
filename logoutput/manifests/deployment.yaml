@@ -1,21 +1,28 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: randomstringgen-dep
+  name: logoutput-dep
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: randomstringgen
+      app: logoutput
   template:
     metadata:
       labels:
-        app: randomstringgen
+        app: logoutput
     spec:
+      volumes:
+      - name: shared-info
+        emptyDir: {}
       containers:
-        - name: randomstringgen
-          image: anmoltuni/logoutput:v1.07
-          imagePullPolicy: Always
-          env:
-          - name: PORT
-            value: "8888"
+      - name: timestamp
+        image: anmoltuni/timestamp:v1.10
+        volumeMounts:
+        - name: shared-info
+          mountPath: /usr/src/app/shared/
+      - name: hashgen
+        image: anmoltuni/hashgen:v1.10
+        volumeMounts:
+        - name: shared-info
+          mountPath: /usr/src/app/shared/
