@@ -1,7 +1,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: randomstringgen-ingress
+  name: logoutput-ingress
 spec:
   rules:
   - http:
@@ -10,7 +10,7 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: randomstringgen-svc
+            name: logoutput-svc
             port: 
               number: 6666
       - path: "/pingpong"
