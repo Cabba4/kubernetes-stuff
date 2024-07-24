@@ -12,12 +12,19 @@ spec:
       labels:
         app: crudapp
     spec:
+      volumes: 
+      - name: image-pv
+        persistentVolumeClaim:
+          claimName: image-claim
       containers:
         - name: crudapp
-          image: anmoltuni/crudapp:latest
+          image: anmoltuni/crudapp:v1.13
           imagePullPolicy: Always
           env:
           - name: PORT
             value: "9999"
           ports:
           - containerPort: 9999
+          volumeMounts:
+          - name: image-pv
+            mountPath: /tmp/image_cache/

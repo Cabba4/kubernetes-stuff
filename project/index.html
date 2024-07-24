@@ -3,10 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple HTML Page</title>
+    <title>Hourly Image and Todo List</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Hello, World!</h1>
-    <p>This is a simple HTML page served by a Python HTTP server.</p>
+    <div class="container">
+        <div class="image-section">
+            <h1>Welcome to the Hourly Image Display</h1>
+            <p>The image below updates every hour:</p>
+            <img src="data:image/jpeg;base64,{{ image_data }}" alt="Hourly Image" style="max-width: 100%; height: auto;">
+        </div>
+
+        <div class="todo-section">
+            <h2>Todo List</h2>
+            <input type="text" id="todo-input" maxlength="140" placeholder="Enter your todo (max 140 characters)">
+            <button id="send-button">Send</button>
+
+            <ul class="todo-list">
+                <li>Learn HTML</li>
+                <li>Build a simple web app</li>
+                <li>Test the app in Docker</li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
