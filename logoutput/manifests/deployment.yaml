@@ -12,30 +12,46 @@ spec:
       labels:
         app: logoutput
     spec:
-      volumes:
-      - name: shared-pv
-        persistentVolumeClaim:
-          claimName: value-claim
+      # volumes:
+      # - name: shared-pv
+      #   persistentVolumeClaim:
+      #     claimName: value-claim
       containers:
-      - name: timestamp
-        image: anmoltuni/timestamp:v1.10
-        volumeMounts:
-        - name: shared-pv
-          mountPath: /usr/src/app/shared/
-      - name: hashgen
-        image: anmoltuni/hashgen:v1.11
-        volumeMounts:
-        - name: shared-pv
-          mountPath: /usr/src/app/shared/
+      - name: logoutput-pod
+        image: anmoltuni/logoutput:v2.01
         env:
         - name: PORT
           value: "8888"
-      - name: pong
-        image: anmoltuni/pong:v1.11
+        ports:
+        - containerPort: 8888
+      - name: pong-pod
+        image: anmoltuni/pong:v2.01
         imagePullPolicy: Always
-        volumeMounts:
-        - name: shared-pv
-          mountPath: /usr/src/app/shared/
         env:
         - name: PORT
           value: "3002"
+        ports:
+        - containerPort: 3002
+
+      # - name: timestamp
+      #   image: anmoltuni/timestamp:v1.10
+      #   volumeMounts:
+      #   - name: shared-pv
+      #     mountPath: /usr/src/app/shared/
+      # - name: hashgen
+      #   image: anmoltuni/hashgen:v1.11
+      #   volumeMounts:
+      #   - name: shared-pv
+      #     mountPath: /usr/src/app/shared/
+      #   env:
+      #   - name: PORT
+      #     value: "8888"
+      # - name: pong
+      #   image: anmoltuni/pong:v1.11
+      #   imagePullPolicy: Always
+      #   volumeMounts:
+      #   - name: shared-pv
+      #     mountPath: /usr/src/app/shared/
+      #   env:
+      #   - name: PORT
+      #     value: "3002"

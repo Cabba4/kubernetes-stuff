@@ -6,14 +6,14 @@ spec:
   rules:
   - http:
       paths:
+      # - path: "/"
+      #   pathType: Prefix
+      #   backend:
+      #     service:
+      #       name: logoutput-svc
+      #       port: 
+      #         number: 6666
       - path: "/"
-        pathType: Prefix
-        backend:
-          service:
-            name: logoutput-svc
-            port: 
-              number: 6666
-      - path: "/pingpong"
         pathType: Prefix
         backend:
           service:
