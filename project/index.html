@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hourly Image and Todo List</title>
+    <title>Hourly Image and Todo List version 2.02</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -16,10 +16,12 @@
 
         <div class="todo-section">
             <h2>Todo List</h2>
-            <input type="text" id="todo-input" maxlength="140" placeholder="Enter your todo (max 140 characters)">
-            <button id="send-button">Send</button>
+            <form id="todo-form">
+                <input type="text" id="todo-text" maxlength="140" placeholder="Enter your todo (max 140 characters)">
+                <button type="submit" id="send-button">Send</button>
+            </form>
 
-            <ul class="todo-list">
+            <ul id="todo-list" class="todo-list">
                 <li>Learn HTML</li>
                 <li>Build a simple web app</li>
                 <li>Test the app in Docker</li>

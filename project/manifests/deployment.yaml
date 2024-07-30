@@ -17,8 +17,8 @@ spec:
         persistentVolumeClaim:
           claimName: image-claim
       containers:
-        - name: crudapp
-          image: anmoltuni/crudapp:v1.13
+        - name: todo-frontend
+          image: anmoltuni/crudapp:v2.02.1
           imagePullPolicy: Always
           env:
           - name: PORT
@@ -28,3 +28,11 @@ spec:
           volumeMounts:
           - name: image-pv
             mountPath: /tmp/image_cache/
+        - name: todo-backend
+          image: anmoltuni/todo-backend:v2.02
+          imagePullPolicy: Always
+          env:
+          - name: PORT
+            value: "3000"
+          ports:
+          - containerPort: 3000

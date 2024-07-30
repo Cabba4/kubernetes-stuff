@@ -10,6 +10,13 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: crudapp-svc
+            name: todo-frontend-svc
             port: 
               number: 3333
+      - path: "/todos"
+        pathType: Prefix
+        backend:
+          service:
+            name: todo-backend-svc
+            port:
+              number: 1234
